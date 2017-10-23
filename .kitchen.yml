@@ -12,6 +12,8 @@ platforms:
       run_command: /usr/sbin/init
       privileged: true
       provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+        - systemctl enable sshd.service
         - yum update yum ca-certificates -y
         - curl -LO https://omnitruck.chef.io/install.sh && sudo bash ./install.sh -v 13.1.31 && rm install.sh
 
@@ -22,6 +24,8 @@ platforms:
       run_command: /usr/sbin/init
       privileged: true
       provision_command:
+        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+        - systemctl enable sshd.service
         - yum update yum ca-certificates -y
         - curl -LO https://omnitruck.chef.io/install.sh && sudo bash ./install.sh -v 12.7.2 && rm install.sh
 

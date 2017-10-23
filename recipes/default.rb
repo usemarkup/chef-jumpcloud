@@ -1,4 +1,4 @@
-%w(curl sudo bash).each do |pkg|
+%w(curl sudo bash openssl).each do |pkg|
   package pkg
 end
 
