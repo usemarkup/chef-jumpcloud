@@ -1,0 +1,28 @@
+.DS_Store
+
+# Bundler
+bin/*
+
+# chef stuff
+Berksfile.lock
+.kitchen
+.kitchen.local.yml
+vendor/
+.coverage/
+.zero-knife.rb
+Policyfile.lock.json
+Cheffile.lock
+.librarian/
+
+# vagrant stuff
+.vagrant/
+.vagrant.d/
+.kitchen/
+
+# ruby/bundler files
+.ruby-version
+.ruby-gemset
+.rvmrc
+Gemfile.lock
+.bundle
+*.gem
