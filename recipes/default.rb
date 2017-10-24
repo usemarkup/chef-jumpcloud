@@ -26,7 +26,7 @@ end
 if node['jumpcloud']['prepare_for_image']
   # We must wait for Jumpcloud to complete its setup.. normally <15 seconds~
   execute 'waiting_for_jumpcloud_to_init' do
-    command "sleep 15"
+    command 'sleep 15'
     action :nothing
     live_stream true
     subscribes :run, 'execute[install_jumpcloud]', :immediately
