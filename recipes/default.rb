@@ -18,6 +18,7 @@ file '/etc/jumpcloud_api.conf' do
   owner 'root'
   owner 'root'
   content "JUMPCLOUD_API_KEY=#{node['jumpcloud']['api_key']}"
+  sensitive true
   not_if { node['jumpcloud']['api_key'].nil? }
 end
 
