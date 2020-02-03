@@ -11,4 +11,4 @@ source_url 'https://github.com/usemarkup/chef-jumpcloud'
 
 supports 'centos'
 
-chef_version '>= 12.7' if respond_to?(:chef_version)
+chef_version '>= 13.0' if respond_to?(:chef_version)

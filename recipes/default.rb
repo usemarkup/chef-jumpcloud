@@ -2,15 +2,23 @@
   package pkg
 end
 
-raise 'Jumpcloud API key is not set' if node['jumpcloud']['connect_key'].nil?
+raise 'Jumpcloud connect key is not set' if node['jumpcloud']['connect_key'].nil?
 
 remote_file "#{Chef::Config[:file_cache_path]}/kickstart.sh" do
   source 'https://kickstart.jumpcloud.com/Kickstart'
   headers('x-connect-key' => node['jumpcloud']['connect_key'])
-  mode 0755
+  mode '0755'
   action :create
   sensitive true
   notifies :run, 'execute[install_jumpcloud]', :delayed
+end
+
+file '/etc/jumpcloud_api.conf' do
+  mode '0400'
+  owner 'root'
+  owner 'root'
+  content "JUMPCLOUD_API_KEY=#{node['jumpcloud']['api_key']}"
+  not_if { node['jumpcloud']['api_key'].nil? }
 end
 
 execute 'install_jumpcloud' do
